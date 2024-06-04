@@ -9,7 +9,7 @@ export class AppService {
     const adminUtil = this.connection.db.admin()
     const mongoPing = await adminUtil.ping()
     return {
-      status: 'OK',
+      status: 'fine.',
       mongoPing
     }
   }
