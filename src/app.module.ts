@@ -7,6 +7,7 @@ import config from './configuration/config'
 import { loggerFactory } from './logger/logger.factory'
 import { MongooseModule } from '@nestjs/mongoose'
 import { BooksModule } from './api/books/books.module'
+import { PlaylistModule } from './api/playlist/playlist.module'
 
 @Module({
   imports: [
@@ -32,7 +33,8 @@ import { BooksModule } from './api/books/books.module'
         }
       }
     }),
-    BooksModule
+    BooksModule,
+    PlaylistModule
   ],
   controllers: [AppController],
   providers: [AppService]
