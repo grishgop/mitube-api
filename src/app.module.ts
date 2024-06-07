@@ -8,6 +8,7 @@ import { loggerFactory } from './logger/logger.factory'
 import { MongooseModule } from '@nestjs/mongoose'
 import { BooksModule } from './api/books/books.module'
 import { PlaylistModule } from './api/playlist/playlist.module'
+import { YtModule } from './api/yt/yt.module'
 
 @Module({
   imports: [
@@ -34,7 +35,8 @@ import { PlaylistModule } from './api/playlist/playlist.module'
       }
     }),
     BooksModule,
-    PlaylistModule
+    PlaylistModule,
+    YtModule
   ],
   controllers: [AppController],
   providers: [AppService]

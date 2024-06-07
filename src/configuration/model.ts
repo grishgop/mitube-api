@@ -4,4 +4,6 @@ export interface AppConfiguration {
   mongoUrl: string
   mongoDatabaseName: string
   startApiDocs: string
+  youtubeApiBaseUrl: string
+  youtubeApiKey: string
 }
