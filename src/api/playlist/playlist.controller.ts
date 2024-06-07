@@ -1,9 +1,25 @@
-import { Body, Controller, Get, Inject, LoggerService, NotFoundException, Param, Post } from '@nestjs/common'
-import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger'
+import {
+  Body,
+  Controller,
+  Get,
+  Inject,
+  LoggerService,
+  NotFoundException,
+  Param,
+  Patch,
+  Post
+} from '@nestjs/common'
+import {
+  ApiCreatedResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags
+} from '@nestjs/swagger'
 import { PlaylistService } from './playlist.service'
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston'
 import { Playlist } from './playlist.schema'
-import { CreatePlaylistDto } from './playlist.dto'
+import { CreatePlaylistDto, PatchPlaylistDto } from './playlist.dto'
 
 @ApiTags('playlist management apis')
 @Controller('playlist')
@@ -41,5 +57,16 @@ export class PlaylistController {
   @Post()
   async createBook(@Body() createDto: CreatePlaylistDto) {
     return this.playlistservice.create(createDto)
+  }
+
+  @ApiOperation({ summary: 'Update playlist' })
+  @ApiOkResponse({ type: Playlist })
+  @ApiNotFoundResponse()
+  @Patch(':id')
+  async uddateById(
+    @Param('id') id: string,
+    @Body() updateDto: PatchPlaylistDto
+  ) {
+    return this.playlistservice.patch(updateDto, id)
   }
 }
